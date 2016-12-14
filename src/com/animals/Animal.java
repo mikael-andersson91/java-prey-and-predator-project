@@ -9,6 +9,15 @@ public abstract class Animal {
     private double posX;
     private double posY;
     private double energyLevel;
+
+    public double getPosX() {
+        return posX;
+    }
+
+    public double getPosY() {
+        return posY;
+    }
+
     private Random random;
 
     public Animal(){
@@ -17,9 +26,13 @@ public abstract class Animal {
         posY = random.nextDouble();
         energyLevel = 50.0;
     }
-    protected abstract void lookForFood();
+    public abstract void lookForFood();
 
-    public void movement(){
+    public void roam(){
+
+    }
+
+    protected void movement(){
 
     }
 

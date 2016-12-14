@@ -11,7 +11,7 @@ public class Prey extends Animal {
     }
 
     @Override
-    protected void lookForFood() {
+    public void lookForFood() {
 
     }
 

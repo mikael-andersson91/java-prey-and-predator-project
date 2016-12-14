@@ -8,8 +8,8 @@ import java.util.Random;
 public class Grass extends Resource{
 
     public int length;
-    public Grass(){
-        super();
+    public Grass(double x, double y){
+        super(x, y);
         Random random = new Random();
         length = random.nextInt(6);
     }

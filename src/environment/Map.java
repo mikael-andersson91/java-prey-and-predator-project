@@ -31,22 +31,27 @@ public class Map {
 
     private void setResources(){
         int numberOfResources = random.nextInt(100);
-        for (int i = 0; i < numberOfResources; i++) {
-            double posX = (double)random.nextInt((int)width);
-            double posY = (double)random.nextInt((int)height);
+        int i = numberOfResources - 1;
+        if (i >= 0)
+            do {
+            double posX = (double) random.nextInt((int) width);
+            double posY = (double) random.nextInt((int) height);
             int resourceType = random.nextInt(3);
-            if(resourceType == 0){
-                Grass grass = new Grass();
-                resources.add(grass);
-            }
-            else if(resourceType == 1){
-                Rock rock = new Rock();
-                resources.add(rock);
-            }
-            else if(resourceType == 2) {
-                Water water = new Water();
-                resources.add(water);
-            }
-        }
+                switch (resourceType) {
+                    case 0:
+                        Grass grass = new Grass(posX,posY);
+                        resources.add(grass);
+                        break;
+                    case 1:
+                        Rock rock = new Rock(posX,posY);
+                        resources.add(rock);
+                        break;
+                    case 2:
+                        Water water = new Water(posX,posY);
+                        resources.add(water);
+                        break;
+                }
+            i--;
+        } while (i >= 0);
     }
 }
