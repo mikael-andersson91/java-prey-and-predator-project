@@ -11,10 +11,19 @@ public class Prey extends Animal {
     }
 
     @Override
-    public void lookForFood() {
+    protected boolean lookForFood() {
+        return true;
+    }
+
+    @Override
+    protected void roam() {
 
     }
 
+    @Override
+    public void roundOfSimulation(){
+
+    }
     protected void avoid(){
 
     }

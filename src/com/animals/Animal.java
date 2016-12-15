@@ -1,19 +1,24 @@
 package com.animals;
 
+import environment.Map;
+
 import java.util.Random;
 
 /**
  * Created by Mikael on 2016-12-10.
  */
 public abstract class Animal {
-    private double posX;
-    private double posY;
-    private double energyLevel;
+    protected double posX;
+    protected double posY;
+    protected double energyLevel;
+    Map perceptionMap;
+
+    public final double MAXIMUM_ENERGY_LEVEL = 50.0;
+    protected double velocity;
 
     public double getPosX() {
         return posX;
     }
-
     public double getPosY() {
         return posY;
     }
@@ -24,17 +29,28 @@ public abstract class Animal {
         random = new Random();
         posX = random.nextDouble();
         posY = random.nextDouble();
-        energyLevel = 50.0;
+        energyLevel = MAXIMUM_ENERGY_LEVEL;
     }
-    public abstract void lookForFood();
 
-    public void roam(){
+    protected abstract boolean lookForFood();
 
+    //distanceToAnimal returns a 3 sized array containing the distance to an animal as a triangle consisting of a horizontal (xSide), vertical (ySide) and straightLineToPrey
+    protected double[] distanceToAnimal(Animal animal){
+
+        double xSide = getPosX() - animal.getPosX();
+        double ySide = getPosX() - animal.getPosY();
+
+        double straightLineToPrey = Math.sqrt(Math.pow(xSide,2) + Math.pow(ySide,2));
+
+        return new double[] {xSide,ySide,straightLineToPrey};
     }
+
+    protected abstract void roam();
 
     protected void movement(){
 
     }
 
+    public abstract void roundOfSimulation();
 
 }
