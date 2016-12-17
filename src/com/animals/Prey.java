@@ -16,6 +16,11 @@ public class Prey extends Animal {
     }
 
     @Override
+    protected void eat() {
+
+    }
+
+    @Override
     protected void roam() {
 
     }

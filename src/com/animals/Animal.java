@@ -1,6 +1,7 @@
 package com.animals;
 
 import environment.Map;
+import environment.Perception;
 
 import java.util.Random;
 
@@ -12,6 +13,7 @@ public abstract class Animal {
     protected double posY;
     protected double energyLevel;
     Map perceptionMap;
+    Perception currentPerception;
 
     public final double MAXIMUM_ENERGY_LEVEL = 50.0;
     protected double velocity;
@@ -44,6 +46,8 @@ public abstract class Animal {
 
         return new double[] {xSide,ySide,straightLineToPrey};
     }
+
+    protected abstract void eat();
 
     protected abstract void roam();
 

@@ -11,6 +11,7 @@ import java.util.Random;
 public class Map {
     private double height;
     private double width;
+    //int hej = Math.nextAfter()
 
     public ArrayList resources;
     public ArrayList animals;

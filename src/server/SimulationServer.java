@@ -3,6 +3,7 @@ package server;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
 
 /**
  * Created by mikael on 2016-12-13.
@@ -27,6 +28,7 @@ public class SimulationServer {
             try
             {
                 Socket clientSocket = myServerSocket.accept();
+                SimulationClientThread simulationClientThread = new SimulationClientThread(clientSocket);
 
             }
             catch(IOException ioe)

@@ -38,7 +38,7 @@ public class Predator extends Animal {
         //TODO: This list of Prey is a placeholder
         ArrayList preyPlaceHolder = new ArrayList<Prey>();
         for (Object prey:preyPlaceHolder) {
-            if (checkHuntLimit((Prey)prey))
+            if (distanceToAnimal((Prey)prey)[2] < distanceToAnimal(targetedPrey)[2])
                 targetedPrey = (Prey)prey;
         }
         //TODO: Move at "x" speed in targetedPreys direction
@@ -50,22 +50,27 @@ public class Predator extends Animal {
     protected boolean lookForFood() {
         //TODO: Add a foreach loop instead of "prey" to check for any nearby prey
         Prey prey = new Prey();
-        if (huntDuration < HUNT_TIME_LIMIT) {
+        if (huntDuration == 0) {
             if (checkHuntLimit(prey)){
                 targetedPrey = prey;
-                huntDuration = HUNT_TIME_LIMIT + 1;
-                //hunt();
+                huntDuration = HUNT_TIME_LIMIT;
                 return true;
             }
             else{
-                //roam();
                 return false;
             }
         }
         else{
-            //hunt();
+            //if predator near prey, eat prey
+            if(prey.getPosX() == this.getPosX() && prey.getPosY() == this.getPosY())
+                eat();
             return true;
         }
+    }
+
+    @Override
+    protected void eat() {
+
     }
 
     //TODO: Overall structure in place, needs more specifics like how movement works and such
